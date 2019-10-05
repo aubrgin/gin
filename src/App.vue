@@ -25,6 +25,7 @@ import AppMenu from './components/app-menu/AppMenu.vue';
 import config from './config/config.js';
 import RowView from './components/layout/RowView.vue';
 import TabView from './components/layout/TabView.vue';
+import sql from '@aubrgin/gin-app-sql';
 
 
 const rootName = config.get('gin/root');
@@ -54,6 +55,7 @@ let Root;
        require(`../node_modules/${org}/gin-app-${pack}/dist/${org}/gin-app-${pack}.css`);
      } catch (_) {}
    }
+   console.log(module)
    return module && module.default
  }
 
