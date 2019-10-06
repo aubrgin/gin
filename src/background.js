@@ -20,9 +20,7 @@ function createWindow () {
     nodeIntegration: true
   } })
 
-  console.log(win.webContents)
-  global.win = win;
-
+    win.setMenuBarVisibility(false)
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     win.loadURL(process.env.WEBPACK_DEV_SERVER_URL)
@@ -32,6 +30,7 @@ function createWindow () {
     // Load the index.html when not in development
     win.loadURL('app://./index.html')
   }
+
 
   win.on('closed', () => {
     win = null
@@ -87,5 +86,3 @@ if (isDevelopment) {
     })
   }
 }
-
-module.exports = win;

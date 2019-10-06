@@ -17,7 +17,7 @@
       >
         <component
           :is="child.component"
-          v-bind="child.props"
+          v-bind="{ ...child.props, ...appProps }"
           :event="transmittedEvent"
           @close="layout.splice(index, 1)"
         />

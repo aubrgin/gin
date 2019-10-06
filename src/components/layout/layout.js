@@ -12,6 +12,19 @@ export default {
       type: Array,
       required: true,
     },
+    availableApps:  {
+      type: Array,
+      required: true,
+    },
+  },
+  computed: {
+    appProps() {
+      return {
+        keys: this.keys,
+        openApp: this.openApp,
+        availableApps: this.availableApps,
+      };
+    },
   },
   data() {
     return {

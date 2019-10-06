@@ -34,7 +34,7 @@
         v-show="activeIndex === index"
         :key="component.key"
         :event="transmittedEvent"
-        v-bind="component.props"
+        v-bind="{ ...component.props, ...appProps }"
         @eventCatched="$emit('eventCatched')"
         @close="closeApp(index)"
       />

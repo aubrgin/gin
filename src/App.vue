@@ -23,6 +23,7 @@
 <script>
 import AppMenu from './components/app-menu/AppMenu.vue';
 import RowView from './components/layout/RowView.vue';
+import AppStore from './components/app-store/AppStore.vue';
 import TabView from './components/layout/TabView.vue';
 import sql from '@aubrgin/gin-app-sql';
 import os from 'os';
@@ -31,29 +32,50 @@ import fs from 'fs';
 
 const rootName = ginFs.getConfig('root', 'gin');
 
- function injectCss(css) {
-   var linkElement = document.createElement('link');
-   linkElement.setAttribute('rel', 'stylesheet');
-   linkElement.setAttribute('type', 'text/css');
-   linkElement.setAttribute('href', 'data:text/css;charset=UTF-8,' + encodeURIComponent(css));
-   document.getElementsByTagName('head')[0].appendChild(linkElement);
- }
-
-let Root;
- if (rootName === 'RowView') {
-   Root = RowView;
- } else if (rootName === 'TabView') {
-   Root = TabView;
- }
-
-function importApp(app) {
-  injectCss(fs.readFileSync(app.stylesheet));
-  return global.require(app.path).default;
+function injectCss(css) {
+    var linkElement = document.createElement('link');
+    linkElement.setAttribute('rel', 'stylesheet');
+    linkElement.setAttribute('type', 'text/css');
+    linkElement.setAttribute('href', 'data:text/css;charset=UTF-8,' + encodeURIComponent(css));
+    document.getElementsByTagName('head')[0].appendChild(linkElement);
 }
 
+let Root;
+if (rootName === 'RowView') {
+    Root = RowView;
+} else if (rootName === 'TabView') {
+    Root = TabView;
+}
+
+function importApp(app) {
+    if (app.stylesheet) injectCss(fs.readFileSync(app.stylesheet));
+    return global.require(app.path).default;
+}
+
+const availableApps = [
+    {
+        name: 'RowView',
+        component: RowView,
+        icon: 'fa-align-justify fa-rotate-90',
+        shortcut: 'KeyR',
+    },
+    {
+        name: 'TabView',
+        component: TabView,
+        icon: 'fa-table',
+        shortcut: 'KeyT',
+    },
+    {
+        name: 'AppStore',
+        component: AppStore,
+        icon: 'fa-handshake',
+        shortcut: 'KeyA',
+    },
+];
+
 export default {
-  name: 'Gin',
-  components: {
+    name: 'Gin',
+    components: {
     AppMenu,
     Root,
   },
@@ -62,23 +84,11 @@ export default {
       choice: undefined,
       currentEvent: [],
       keys: ginFs.getConfig('keys', 'gin'),
-      availableApps: [
-        {
-          name: 'RowView',
-          component: RowView,
-          icon: 'fa-align-justify fa-rotate-90',
-          shortcut: 'KeyR',
-        },
-        {
-          name: 'TabView',
-          component: TabView,
-          icon: 'fa-table',
-          shortcut: 'KeyT',
-        },
-      ],
+      availableApps,
       appProps: {
         openApp: this.openApp,
         keys: ginFs.getConfig('keys', 'gin'),
+        availableApps,
       },
     };
   },
