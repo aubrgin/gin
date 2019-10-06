@@ -20,6 +20,9 @@ function createWindow () {
     nodeIntegration: true
   } })
 
+  console.log(win.webContents)
+  global.win = win;
+
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     win.loadURL(process.env.WEBPACK_DEV_SERVER_URL)
@@ -57,7 +60,6 @@ app.on('activate', () => {
 // Some APIs can only be used after this event occurs.
 app.on('ready', async () => {
   global.configPath = app.getPath('userData');
-  console.log('foo')
 
   if (isDevelopment && !process.env.IS_TEST) {
     // Install Vue Devtools
@@ -85,3 +87,5 @@ if (isDevelopment) {
     })
   }
 }
+
+module.exports = win;

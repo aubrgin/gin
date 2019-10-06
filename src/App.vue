@@ -22,13 +22,22 @@
 
 <script>
 import AppMenu from './components/app-menu/AppMenu.vue';
-import config from './config/config.js';
 import RowView from './components/layout/RowView.vue';
 import TabView from './components/layout/TabView.vue';
 import sql from '@aubrgin/gin-app-sql';
+import os from 'os';
+import ginFs from '@aubrgin/gin-fs';
+import fs from 'fs';
 
+const rootName = ginFs.getConfig('root', 'gin');
 
-const rootName = config.get('gin/root');
+ function injectCss(css) {
+   var linkElement = document.createElement('link');
+   linkElement.setAttribute('rel', 'stylesheet');
+   linkElement.setAttribute('type', 'text/css');
+   linkElement.setAttribute('href', 'data:text/css;charset=UTF-8,' + encodeURIComponent(css));
+   document.getElementsByTagName('head')[0].appendChild(linkElement);
+ }
 
 let Root;
  if (rootName === 'RowView') {
@@ -37,27 +46,10 @@ let Root;
    Root = TabView;
  }
 
- async function importPackage(path) {
-   let module;
-   try {
-     module = await import(`./components/${path}.vue`);
-   } catch (_) {}
-   if (!module) {
-     try {
-       module = await import(`gin-app-${path}`);
-     } catch (_) {}
-   }
-   if (!module) {
-     try {
-       const [org, pack] = path.split('/');
-       module = global.require(`${org}/gin-app-${pack}`);
-       // TODO find a better way to do this...
-       require(`../node_modules/${org}/gin-app-${pack}/dist/${org}/gin-app-${pack}.css`);
-     } catch (_) {}
-   }
-   console.log(module)
-   return module && module.default
- }
+function importApp(app) {
+  injectCss(fs.readFileSync(app.stylesheet));
+  return global.require(app.path).default;
+}
 
 export default {
   name: 'Gin',
@@ -69,20 +61,32 @@ export default {
     return {
       choice: undefined,
       currentEvent: [],
-      keys: config.get('gin/keys'),
-      availableApps: [],
+      keys: ginFs.getConfig('keys', 'gin'),
+      availableApps: [
+        {
+          name: 'RowView',
+          component: RowView,
+          icon: 'fa-align-justify fa-rotate-90',
+          shortcut: 'KeyR',
+        },
+        {
+          name: 'TabView',
+          component: TabView,
+          icon: 'fa-table',
+          shortcut: 'KeyT',
+        },
+      ],
       appProps: {
         openApp: this.openApp,
-        keys: config.get('gin/keys'),
-        config: config,
+        keys: ginFs.getConfig('keys', 'gin'),
       },
     };
   },
   created() {
     document.addEventListener('keydown', this.manageEvent);
-    config.get('gin/apps').forEach(async(app) => {
+    ginFs.getConfig('apps', 'gin').forEach(async(app) => {
       this.availableApps.push({
-        component: await importPackage(app.path),
+        component: await importApp(app),
         ...app,
       });
     });
