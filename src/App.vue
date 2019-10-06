@@ -25,7 +25,6 @@ import AppMenu from './components/app-menu/AppMenu.vue';
 import RowView from './components/layout/RowView.vue';
 import AppStore from './components/app-store/AppStore.vue';
 import TabView from './components/layout/TabView.vue';
-import sql from '@aubrgin/gin-app-sql';
 import os from 'os';
 import ginFs from '@aubrgin/gin-fs';
 import fs from 'fs';

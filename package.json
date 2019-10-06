@@ -10,7 +10,6 @@
   },
   "main": "background.js",
   "dependencies": {
-    "@aubrgin/gin-app-sql": "^0.1.9",
     "@aubrgin/gin-fs": "^0.1.1",
     "core-js": "^2.6.5",
     "import-global": "^0.1.0",
