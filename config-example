@@ -1,8 +1,0 @@
-{"root":"TabView","apps":[{"name":"Sql","packageName":"@aubrgin/gin-app-sql","icon":"fa-handshake","stylesheet":"/home/julien/.gin/node_modules/@aubrgin/gin-app-sql/dist/@aubrgin/gin-app-sql.css","path":"/home/julien/.gin/node_modules/@aubrgin/gin-app-sql"}],"keys":{
-  "stop": "Escape", 
-  "prefix": "Space",
-  "layout": {
-    "open": "KeyO",
-    "close": "KeyD"
-  }
-}}

@@ -56,10 +56,10 @@ export default {
      height: 60%;
      top: 20%;
      left: 20%;
-     background-color: $color-primary;
+     background-color: var(--color-primary);
      z-index: 2;
      padding: 2%;
-     box-shadow: 10px 10px 5px 5px $shadow-black-medium;
+     box-shadow: 10px 10px 5px 5px var(--shadow-black-medium);
 
      .app-button {
        position: relative;
@@ -68,13 +68,13 @@ export default {
        margin: 2%;
        padding: 0px;
        cursor: pointer;
-       color: $color-text-inactive;
-       background-color: $color-background;
-       box-shadow: 3px 3px 3px 3px $shadow-black-medium;
+       color: var(--color-text-inactive);
+       background-color: var(--color-background);
+       box-shadow: 3px 3px 3px 3px var(--shadow-black-medium);
 
        &:hover {
-         background-color: $color-active;
-         color: $color-background;
+         background-color: var(--color-active);
+         color: var(--color-background);
        }
        .fa {
          padding: 4px;
@@ -96,14 +96,14 @@ export default {
        right: 0;
        cursor: pointer;
        color: #797990;
-       background-color: $color-background;
-       box-shadow: 1px 1px 1px 1px $shadow-black-medium;
+       background-color: var(--color-background);
+       box-shadow: 1px 1px 1px 1px var(--shadow-black-medium);
        height: 24px;
        width: 24px;
 
        &:hover {
          background-color: #797990;
-         color: $color-background;
+         color: var(--color-background);
        }
      }
    }

@@ -67,24 +67,24 @@ export default {
      text-transform: uppercase;
      font-weight: bold;
      font-size: 16px;
-     color: $color-text-inactive;
+     color: var(--color-text-inactive);
      cursor: pointer;
 
      &:nth-child(even) {
-       background-color: $color-primary;
+       background-color: var(--color-primary);
      }
      &:nth-child(odd) {
-       background-color: $color-alternate;
+       background-color: var(--color-alternate);
      }
 
      &:hover {
-       background-color: $color-active;
-       color: $color-text;
+       background-color: var(--color-active);
+       color: var(--color-text);
      }
 
      &.active {
-       background-color: $color-background;
-       color: $color-text;
+       background-color: var(--color-background);
+       color: var(--color-text);
        cursor: default;
      }
 
@@ -99,15 +99,15 @@ export default {
        position: absolute;
        right: 0;
        top: 0;
-       height: $tab-height;
-       width: $tab-height;
-       color: $color-text-inactive;
+       height: var(--tab-height);
+       width: var(--tab-height);
+       color: var(--color-text-inactive);
        cursor: pointer;
        background-color: inherit;
 
        &:hover {
-         color: $color-text;
-         background-color: $shadow-white-light;
+         color: var(--color-text);
+         background-color: var(--shadow-white-light);
        }
      }
    }
@@ -115,32 +115,32 @@ export default {
    .tab-container {
      height: calc(100% - 32px);
      width: 100%;
-     background-color: $color-background;
+     background-color: var(--color-background);
      position: absolute;
-     top: $tab-height;
+     top: var(--tab-height);
      left: 0;
-     border: 5px solid $shadow-white-light;
+     border: 5px solid var(--shadow-white-light);
    }
 
    .open-app {
-     color: $color-text-inactive;
+     color: var(--color-text-inactive);
      cursor: pointer;
-     width: $tab-height;
+     width: var(--tab-height);
      font-size: 24px;
      border-bottom: none;
      padding: inherit;
 
      &:nth-child(even) {
-       background-color: $color-primary;
+       background-color: var(--color-primary);
      }
      &:nth-child(odd) {
-       background-color: $color-alternate;
+       background-color: var(--color-alternate);
      }
 
      &:hover {
-       color: $color-text;
-       background-color: $color-active;
-       border-color: $color-active;
+       color: var(--color-text);
+       background-color: var(--color-active);
+       border-color: var(--color-active);
      }
    }
  }

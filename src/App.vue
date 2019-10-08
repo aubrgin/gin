@@ -93,6 +93,7 @@ export default {
   },
   created() {
     document.addEventListener('keydown', this.manageEvent);
+    injectCss(fs.readFileSync(`${ginFs.ginPath}/${ginFs.getConfig('theme', 'gin')}`))
     ginFs.getConfig('apps', 'gin').forEach(async(app) => {
       this.availableApps.push({
         component: await importApp(app),

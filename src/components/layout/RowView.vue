@@ -116,7 +116,7 @@ export default {
  }
  .vertical-resizer {
      width: 3px;
-     background-color: $color-alternate;
+     background-color: var(--color-alternate);
      cursor: ew-resize;
  }
 </style>

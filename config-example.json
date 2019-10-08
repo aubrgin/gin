@@ -1,0 +1,10 @@
+{"root":"TabView",
+"theme": "gin.css",
+"apps":[],"keys":{
+  "stop": "Escape", 
+  "prefix": "Space",
+  "layout": {
+    "open": "KeyO",
+    "close": "KeyD"
+  }
+}}
