@@ -5,6 +5,7 @@
         :event="currentEvent"
         v-bind="appProps"
         @eventCatched="clearEvent"
+        @reload-apps="reloadApps"
       />
     </div>
     <AppMenu
@@ -72,6 +73,15 @@ const availableApps = [
     },
 ];
 
+ async function awaitArray(array) {
+   const awaited = [];
+   awaited.length = array.length;
+   for (let promise of array) {
+     awaited.push(await promise);
+   }
+   return awaited;
+ }
+
 export default {
     name: 'Gin',
     components: {
@@ -94,14 +104,23 @@ export default {
   created() {
     document.addEventListener('keydown', this.manageEvent);
     injectCss(fs.readFileSync(`${ginFs.ginPath}/${ginFs.getConfig('theme', 'gin')}`))
-    ginFs.getConfig('apps', 'gin').forEach(async(app) => {
-      this.availableApps.push({
-        component: await importApp(app),
-        ...app,
-      });
-    });
+    this.reloadApps();
   },
   methods: {
+    async reloadApps() {
+      this.availableApps = availableApps;
+      this.availableApps.concat(
+        await awaitArray(
+          ginFs.getConfig('apps', 'gin').map(async(app) => {
+            this.availableApps.push({
+              component: await importApp(app),
+              ...app,
+            });
+          }),
+        )
+      );
+      this.$set(this.availableApps)
+    },
     clearEvent() {
       this.currentEvent = [];
     },
@@ -176,6 +195,7 @@ html, body, #app {
 * {
   overflow: hidden;
   box-sizing: border-box;
+  color: var(--color-text);
 }
 .command {
     position: absolute;

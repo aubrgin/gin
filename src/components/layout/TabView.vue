@@ -37,6 +37,7 @@
         v-bind="{ ...component.props, ...appProps }"
         @eventCatched="$emit('eventCatched')"
         @close="closeApp(index)"
+        @reload-apps="$emit('reload-apps')"
       />
     </div>
   </div>

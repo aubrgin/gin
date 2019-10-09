@@ -17,15 +17,6 @@ export default {
       required: true,
     },
   },
-  computed: {
-    appProps() {
-      return {
-        keys: this.keys,
-        openApp: this.openApp,
-        availableApps: this.availableApps,
-      };
-    },
-  },
   data() {
     return {
       transmittedEvent: [],
@@ -68,6 +59,13 @@ export default {
   computed: {
     activeTab() {
       return this.layout[this.activeIndex];
+    },
+    appProps() {
+      return {
+        keys: this.keys,
+        openApp: this.openApp,
+        availableApps: this.availableApps,
+      };
     },
   },
   methods: {

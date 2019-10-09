@@ -20,6 +20,7 @@
           v-bind="{ ...child.props, ...appProps }"
           :event="transmittedEvent"
           @close="layout.splice(index, 1)"
+          @reload-apps="$emit('reload-apps')"
         />
       </div>
       <template v-if="index !== layout.length-1">
