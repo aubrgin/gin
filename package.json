@@ -10,8 +10,10 @@
   },
   "main": "background.js",
   "dependencies": {
+    "@aubrgin/gin-components": "^0.2.0",
     "@aubrgin/gin-fs": "^0.1.3",
     "core-js": "^2.6.5",
+    "electron": "^6.0.12",
     "import-global": "^0.1.0",
     "npm-programmatic": "0.0.12",
     "vue": "^2.6.10"
@@ -21,7 +23,6 @@
     "@vue/cli-plugin-eslint": "^3.11.0",
     "@vue/cli-service": "^3.11.0",
     "babel-eslint": "^10.0.1",
-    "electron": "5.0.11",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "sass": "^1.22.12",

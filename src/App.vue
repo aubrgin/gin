@@ -24,6 +24,7 @@
 <script>
 import AppMenu from './components/app-menu/AppMenu.vue';
 import RowView from './components/layout/RowView.vue';
+import WebView from './components/WebView.vue';
 import AppStore from './components/app-store/AppStore.vue';
 import TabView from './components/layout/TabView.vue';
 import os from 'os';
@@ -65,11 +66,17 @@ const availableApps = [
         icon: 'fa-table',
         shortcut: 'KeyT',
     },
+   {
+     name: 'AppStore',
+     component: AppStore,
+     icon: 'fa-handshake',
+     shortcut: 'KeyA',
+   },
     {
-        name: 'AppStore',
-        component: AppStore,
+        name: 'WebView',
+        component: WebView,
         icon: 'fa-handshake',
-        shortcut: 'KeyA',
+        shortcut: 'KeyW',
     },
 ];
 
@@ -104,6 +111,7 @@ export default {
   created() {
     document.addEventListener('keydown', this.manageEvent);
     injectCss(fs.readFileSync(`${ginFs.ginPath}/${ginFs.getConfig('theme', 'gin')}`))
+    injectCss(fs.readFileSync('node_modules/@aubrgin/gin-components/dist/@aubrgin/gin-components.css'));
     this.reloadApps();
   },
   methods: {

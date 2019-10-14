@@ -1,7 +1,7 @@
 <template>
-  <button
+  <gin-button
     class="app-button"
-    @click.stop="$emit('click')"
+    @click="$emit('click')"
   >
     <div :class="['fa', 'fa-2x', app.icon]" />
     <div
@@ -12,7 +12,7 @@
       class="app-shortcut"
       v-text="app.shortcut"
     />
-  </button>
+  </gin-button>
 </template>
 
 <script>

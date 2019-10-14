@@ -17,15 +17,16 @@
         />
         <button
           class="close-button"
-          @click.stop="closeApp(index)"
+          @click="closeApp(index)"
           v-text="'X'"
         />
       </button>
-      <button
+      <gin-button
         class="open-app"
-        @click.stop="onOpenApp"
-        v-text="'+'"
-      />
+        @click="onOpenApp"
+      >
+        +
+      </gin-button>
     </div>
     <div class="tab-container">
       <component
