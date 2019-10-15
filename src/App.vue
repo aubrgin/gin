@@ -34,10 +34,9 @@ import fs from 'fs';
 const rootName = ginFs.getConfig('root', 'gin');
 
 function injectCss(css) {
-    var linkElement = document.createElement('link');
-    linkElement.setAttribute('rel', 'stylesheet');
+    var linkElement = document.createElement('style');
     linkElement.setAttribute('type', 'text/css');
-    linkElement.setAttribute('href', 'data:text/css;charset=UTF-8,' + encodeURIComponent(css));
+    linkElement.textContent = css;
     document.getElementsByTagName('head')[0].appendChild(linkElement);
 }
 
