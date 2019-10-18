@@ -1,18 +1,7 @@
 {
   "root": "TabView",
   "theme": "gin.css",
-  "apps": [
-    {
-      "name": "Slack aubrgin",
-      "packageName": "@aubrgin/gin-app-web-view",
-      "stylesheet": "/home/julien/.gin/node_modules/@aubrgin/gin-app-web-view/dist/@aubrgin/gin-app-web-view.css",
-      "icon": "fa fa-handshake",
-      "props": {
-        "url": "https://aubrgin.slack.com"
-      },
-      "path": "/home/julien/.gin/node_modules/@aubrgin/gin-app-web-view"
-    }
-  ],
+  "apps": [],
   "keys": {
     "stop": "Escape",
     "prefix": "Space",

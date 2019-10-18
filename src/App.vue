@@ -27,11 +27,9 @@ import RowView from './components/layout/RowView.vue';
 import WebView from './components/WebView.vue';
 import AppStore from './components/app-store/AppStore.vue';
 import TabView from './components/layout/TabView.vue';
-import os from 'os';
 import ginFs from '@aubrgin/gin-fs';
 import fs from 'fs';
 
-const rootName = ginFs.getConfig('root', 'gin');
 
 function injectCss(css) {
     var linkElement = document.createElement('link');
@@ -41,6 +39,7 @@ function injectCss(css) {
     document.getElementsByTagName('head')[0].appendChild(linkElement);
 }
 
+ const rootName = ginFs.getConfig('root', 'gin');
 let Root;
 if (rootName === 'RowView') {
     Root = RowView;
