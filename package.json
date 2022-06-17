@@ -13,7 +13,7 @@
     "@aubrgin/gin-components": "^0.2.0",
     "@aubrgin/gin-fs": "^0.1.3",
     "core-js": "^2.6.5",
-    "electron": "^6.0.12",
+    "electron": "^15.5.5",
     "import-global": "^0.1.0",
     "npm-programmatic": "0.0.12",
     "vue": "^2.6.10"
